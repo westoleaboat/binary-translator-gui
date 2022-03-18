@@ -1,2 +1,1 @@
-# yabc
-yet another binary converter
+# yet another binary converter

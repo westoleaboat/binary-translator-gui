@@ -106,6 +106,9 @@ class LabelInput(tk.Frame):
         # can access them through variable object if needed.
         self.variable.label_widget = self
 
+        # active disable_var
+        self.disable_var = disable_var
+
         ######################
         # setup the variable #
         ######################
@@ -162,8 +165,6 @@ class LabelInput(tk.Frame):
         # with self.input created, add to layout
         self.input.grid(row=1, column=0, sticky=tk.W + tk.E)
         self.columnconfigure(0, weight=1)  # fill entire width with column 0
-
-        # self.input.configure(state=tk.DISABLED)
 
         if disable_var:  # p.154
             self.disable_var = disable_var

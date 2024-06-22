@@ -43,11 +43,15 @@ class Application(tk.Tk):  # subclase from Tk instead of Frame
         # translate
         output = self.model.translate(data)
         # activate output
-        self.myform.set_output_state(tk.NORMAL)
+        self.myform._disable_var.set(False)
+        # self.myform.set_output_state(tk.NORMAL)
+
         # set output
         self.myform._vars['Output'].set(output)
+
         # disable output
-        self.myform.set_output_state(tk.DISABLED)
+        self.myform._disable_var.set(True)
+        # self.myform.set_output_state(tk.DISABLED)
 
 
 if __name__ == "__main__":

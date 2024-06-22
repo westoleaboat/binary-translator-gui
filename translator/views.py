@@ -49,6 +49,9 @@ class MyForm(tk.Frame):
             # 'Binary': tk.StringVar()
         }
 
+        # disable var for Output field
+        self._disable_var = tk.BooleanVar()
+
         # build the form
         self.columnconfigure(0, weight=1)
 
@@ -69,9 +72,11 @@ class MyForm(tk.Frame):
             input_class=w.BoundText,
             field_spec=fields['Output'],
             var=self._vars['Output'], input_args={
-                'width': 85, 'height': 6, 'state': tk.DISABLED},
-            # disable_var=fields['Output']
+                'width': 85, 'height': 6},
+            disable_var=self._disable_var
         ).grid(row=1, column=0)
+
+        self._disable_var.set(True)
 
         # text to display data from form
         self.output_var = tk.StringVar()
@@ -102,7 +107,9 @@ class MyForm(tk.Frame):
     def reset(self):
         """Reset entries. Set all variables to empty string"""
         # activate widget
-        self.set_output_state(tk.NORMAL)
+        self._disable_var.set(False)
+        # self.set_output_state(tk.NORMAL)
+
         # reset data
         for var in self._vars.values():
             if isinstance(var, tk.BooleanVar):
@@ -114,7 +121,8 @@ class MyForm(tk.Frame):
                 # set data label to empty string
                 # self.output_var.set('')
         # disable widget
-        self.set_output_state(tk.DISABLED)
+        self._disable_var.set(True)
+        # self.set_output_state(tk.DISABLED)
 
     def get(self):
         """Retrieve data from the form so it can be saved or used"""
@@ -130,17 +138,22 @@ class MyForm(tk.Frame):
         # return the data
         return data
 
-    def set_output_state(self, state):
-        output_widget = self._get_widget_by_var(self._vars['Output'])
-        if output_widget:
-            output_widget.input.configure(state=state)
+    #########################################
+    # Disable widget if disable_var not used:
+    #
+    # def set_output_state(self, state):
+    #     output_widget = self._get_widget_by_var(self._vars['Output'])
+    #     if output_widget:
+    #         output_widget.input.configure(state=state)
 
-    def _get_widget_by_var(self, var):
-        """Return the widget associated with a given variable."""
-        for widget in self.winfo_children():
-            if isinstance(widget, w.LabelInput) and widget.variable == var:
-                return widget
-        return None
+    # def _get_widget_by_var(self, var):
+    #     """Return the widget associated with a given variable."""
+    #     for widget in self.winfo_children():
+    #         if isinstance(widget, w.LabelInput) and widget.variable == var:
+    #             return widget
+    #     return None
+    #########################################
 
     def _on_trans(self):
         self.event_generate('<<TranslateText>>')
+        # self._disable_var.set(False)

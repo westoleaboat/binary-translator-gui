@@ -97,7 +97,6 @@ class LabelInput(tk.Frame):
         disable_var=None, **kwargs
     ):
         super().__init__(parent, **kwargs)
-
         input_args = input_args or {}
         label_args = label_args or {}
         # save input_var to an instance variable
@@ -163,6 +162,22 @@ class LabelInput(tk.Frame):
         # with self.input created, add to layout
         self.input.grid(row=1, column=0, sticky=tk.W + tk.E)
         self.columnconfigure(0, weight=1)  # fill entire width with column 0
+
+        # self.input.configure(state=tk.DISABLED)
+
+        if disable_var:  # p.154
+            self.disable_var = disable_var
+            self.disable_var.trace_add('write', self._check_disable)
+
+    def _check_disable(self, *_):
+        if not hasattr(self, 'disable_var'):
+            return
+
+        if self.disable_var.get():
+            self.input.configure(state=tk.DISABLED)
+            self.variable.set('')
+        else:
+            self.input.configure(state=tk.NORMAL)
 
     def grid(self, sticky=(tk.E + tk.W), **kwargs):
         """override geometry layout default grid"""

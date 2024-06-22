@@ -1,6 +1,10 @@
 """ translator/models.py"""
 
 from .constants import FieldTypes as FT
+import tkinter as tk
+
+
+from . import views as v
 
 
 class TextToBinary:

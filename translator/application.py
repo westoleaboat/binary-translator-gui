@@ -33,14 +33,21 @@ class Application(tk.Tk):  # subclase from Tk instead of Frame
 
         # Add form with widgets
         self.myform = v.MyForm(self, self.model)
+
         self.myform.grid(row=1, padx=10, sticky=tk.W + tk.E)
         self.myform.bind('<<TranslateText>>', self._on_trans)
 
     def _on_trans(self, *_):
+        # retrieve input
         data = self.myform.get()
+        # translate
         output = self.model.translate(data)
-        # self.myform._vars['Output']
+        # activate output
+        self.myform.set_output_state(tk.NORMAL)
+        # set output
         self.myform._vars['Output'].set(output)
+        # disable output
+        self.myform.set_output_state(tk.DISABLED)
 
 
 if __name__ == "__main__":

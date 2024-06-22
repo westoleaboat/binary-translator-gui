@@ -7,10 +7,10 @@ Python tkinter GUI for a text-to-binary converter
 
 ### Improve
 - [ ] Fix inter-object communication (binding GUI objects directly to commands on other objects is not optimal)
-- [ ] Disable Output widget
 - [ ] Create Binary to Text logic 
 
 ### Completed
+- [x] Disable Output widget
 - [x] Organize layour with classes
 - [x] Translate Text to Binary
 

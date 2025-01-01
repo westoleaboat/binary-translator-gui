@@ -90,12 +90,12 @@ class MyForm(tk.Frame):
         buttons.grid(sticky=tk.W + tk.E, row=4)
         # pass instance methods as callback commands
         self.transbutton = ttk.Button(
-            buttons, text="Text to Binary", command=self._on_trans)
+            buttons, text="Convert", command=self._on_trans)
         self.transbutton.pack(side=tk.RIGHT)
 
         self.transbutton = ttk.Button(
             buttons, text="Binary to Text", command=self._on_trans, state='disabled')
-        self.transbutton.pack(side=tk.RIGHT)
+        # self.transbutton.pack(side=tk.RIGHT)
 
         # self.savebutton = ttk.Button(
         #     buttons, text="Save", command=self.master._on_save)  # on parent

@@ -1,13 +1,14 @@
-# yet another binary converter
+# GUI Binary Translator with Tkinter
+
 Python tkinter GUI for a text-to-binary converter
 
-![Screenshot_select-area_20220318140848](https://user-images.githubusercontent.com/68698872/159000301-e97b7628-0084-492f-b4fd-381da454a83c.png)
+![translator](translator.png)
 
 ## TODO:
 
 ### Improve
 - [ ] Fix inter-object communication (binding GUI objects directly to commands on other objects is not optimal)
-- [ ] Create Binary to Text logic 
+- [x] Create Binary to Text logic 
 
 ### Completed
 - [x] Disable Output widget

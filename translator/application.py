@@ -26,10 +26,10 @@ class Application(tk.Tk):  # subclase from Tk instead of Frame
         self.columnconfigure(0, weight=0)
 
         # header
-        ttk.Label(  # parent is self. self is our Tk instance inside this class
-            self, text='Translate Below',
-            font=("TkDefaultFont, 18")
-        ).grid(row=0)
+        # ttk.Label(  # parent is self. self is our Tk instance inside this class
+        #     self, text='Translate Below',
+        #     font=("TkDefaultFont, 18")
+        # ).grid(row=0)
 
         # Add form with widgets
         self.myform = v.MyForm(self, self.model)
